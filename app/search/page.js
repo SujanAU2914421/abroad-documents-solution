@@ -4,7 +4,7 @@ import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { useBlogContext } from "@/context/blogContext";
 import { useMainContext } from "@/context/mainContects";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
@@ -12,14 +12,22 @@ export const dynamic = "force-dynamic";
 export default function Page() {
 	const { blogs } = useBlogContext();
 	const { services } = useMainContext();
-	const searchParams = useSearchParams();
 	const router = useRouter();
 
-	const query = searchParams.get("query")?.toLowerCase().trim() || "";
-	const [searchInput, setSearchInput] = useState(query);
-	const [loading, setLoading] = useState(false);
-
 	const resultRef = useRef(null);
+	const [searchInput, setSearchInput] = useState("");
+	const [loading, setLoading] = useState(false);
+	const [query, setQuery] = useState("");
+
+	// 🍃 Get query from URL on mount
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			const params = new URLSearchParams(window.location.search);
+			const q = params.get("query")?.toLowerCase().trim() || "";
+			setQuery(q);
+			setSearchInput(q);
+		}
+	}, []);
 
 	const filteredServices = services.filter((s) => s.name.toLowerCase().includes(query));
 	const filteredBlogs = blogs.filter((b) => b.topic.toLowerCase().includes(query));
@@ -28,10 +36,11 @@ export default function Page() {
 		e.preventDefault();
 		if (searchInput.trim()) {
 			setLoading(true);
-			router.push(`/search?query=${encodeURIComponent(searchInput.trim())}`);
-
+			const encodedQuery = encodeURIComponent(searchInput.trim());
+			router.push(`/search?query=${encodedQuery}`);
 			setTimeout(() => {
 				resultRef.current?.scrollIntoView({ behavior: "smooth" });
+				setQuery(searchInput.trim().toLowerCase());
 				setLoading(false);
 			}, 500);
 		}
