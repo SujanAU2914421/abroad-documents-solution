@@ -1,11 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
-import HeroButton from "@/components/landingPageComponents/heroButton";
 import { useBlogContext } from "@/context/blogContext";
 import { useMainContext } from "@/context/mainContects";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
+
+export const dynamic = "force-dynamic"; // ⛔ Prevent static build crash
 
 export default function Page() {
 	const { blogs } = useBlogContext();
@@ -15,14 +16,24 @@ export default function Page() {
 
 	const query = searchParams.get("query")?.toLowerCase().trim() || "";
 	const [searchInput, setSearchInput] = useState(query);
+	const [loading, setLoading] = useState(false);
+
+	const resultRef = useRef(null); // for scroll
 
 	const filteredServices = services.filter((s) => s.name.toLowerCase().includes(query));
 	const filteredBlogs = blogs.filter((b) => b.topic.toLowerCase().includes(query));
 
-	const handleSearch = (e) => {
+	const handleSearch = async (e) => {
 		e.preventDefault();
 		if (searchInput.trim()) {
-			window.location.href = `/search?query=${encodeURIComponent(searchInput.trim())}`;
+			setLoading(true);
+			router.push(`/search?query=${encodeURIComponent(searchInput.trim())}`);
+
+			// Delay to allow router update before scrolling
+			setTimeout(() => {
+				resultRef.current?.scrollIntoView({ behavior: "smooth" });
+				setLoading(false);
+			}, 500);
 		}
 	};
 
@@ -43,7 +54,7 @@ export default function Page() {
 
 				{/* Search Input */}
 				<form onSubmit={handleSearch} className="relative max-w-xl mx-auto">
-					<div className="relative flex items-center gap-4 xl:flex-nowrap lg:flex-nowrap md:flex-nowrap sm:flex-nowrap flex-wrap justify-center">
+					<div className="relative flex items-center gap-4 flex-wrap justify-center">
 						<Input
 							type="search"
 							placeholder="Search for blogs or services..."
@@ -51,19 +62,18 @@ export default function Page() {
 							className="h-13 rounded-full px-8 text-sm"
 							onChange={(e) => setSearchInput(e.target.value)}
 						/>
-
 						<button
 							type="submit"
 							className="outline-none h-13 bg-purple-600 text-white px-8 cursor-pointer rounded-full font-bold shadow-xl"
 						>
-							Search
+							{loading ? "Loading search..." : "Search"}
 						</button>
 					</div>
 				</form>
 
 				{/* Search Results */}
 				{query && (
-					<div className="relative max-w-xl mx-auto space-y-8">
+					<div ref={resultRef} className="relative max-w-xl mx-auto space-y-8">
 						{/* Services */}
 						{filteredServices.length > 0 && (
 							<div>
