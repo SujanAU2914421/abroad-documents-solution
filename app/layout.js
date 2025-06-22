@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
@@ -21,7 +20,7 @@ const geistMono = Geist_Mono({
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="en">
+		<html lang="ne">
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 				<div className="relative h-screen w-screen overflow-x-hidden overflow-y-auto tracking-wide scroll-smooth">
 					<MainContextProvider>

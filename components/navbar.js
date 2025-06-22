@@ -18,10 +18,27 @@ export default function Navbar() {
 
 	return (
 		<div className="sticky top-0 z-20 w-full h-auto xl:px-16 lg:px-16 md:px-8 px-4 flex items-center justify-between bg-white text-black">
-			<div
-				className="relative h-24 w-24"
-				style={{ background: "url(/assets/logo/logo.png) center / cover" }}
-			></div>
+			<div className="relative py-6 flex gap-4 items-center">
+				<div className="relative">
+					<svg
+						width="30"
+						height="30"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						strokeWidth="2"
+						strokeLinecap="round"
+						strokeLinejoin="round"
+					>
+						<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+						<path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+					</svg>
+				</div>
+				<div className="relative">
+					<div className="relative text-[12px] font-bold">Abroad Documents Solution</div>
+					<div className="relative text-[10px] mt-[1px]">Gautam Law Chamber</div>
+				</div>
+			</div>
 			<div className="relative xl:flex lg:flex hidden items-center gap-8 text-sm font-medium">
 				<Link href="/">
 					<div className="cursor-pointer">Home</div>
