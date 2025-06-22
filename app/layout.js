@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
@@ -16,16 +19,11 @@ const geistMono = Geist_Mono({
 	subsets: ["latin"],
 });
 
-export const metadata = {
-	title: "Abroad Documents Solution",
-	description: "Companys portfolio",
-};
-
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<div className="relative h-screen w-screen overflow-x-hidden overflow-y-auto tracking-wide">
+				<div className="relative h-screen w-screen overflow-x-hidden overflow-y-auto tracking-wide scroll-smooth">
 					<MainContextProvider>
 						<BlogContextProvider>
 							<Navbar />

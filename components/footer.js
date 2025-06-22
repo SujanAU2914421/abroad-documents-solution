@@ -3,12 +3,12 @@ import Link from "next/link";
 
 export default function Footer() {
 	return (
-		<div className="bg-gray-900 text-gray-100 py-12 px-6 md:px-20 tracking-wide">
+		<div className="bg-gray-900 text-gray-100 pb-8 pt-16 px-6 md:px-20 tracking-wide">
 			<div className="grid md:grid-cols-4 gap-10">
 				{/* About */}
 				<div className="space-y-4">
 					<div className="text-xl font-semibold">Abroad Documents Solution Nepal</div>
-					<div className="text-sm text-gray-400">
+					<div className="text-xs text-gray-400">
 						<span>
 							Fast, Reliable Online Notary & Translation Services in Nepal. Need documents notarized or
 							translated? We serve individuals & businesses with over 10 years of trusted experience.
@@ -22,7 +22,7 @@ export default function Footer() {
 				{/* Quick Links */}
 				<div className="space-y-2">
 					<div className="text-lg font-semibold mb-4">Quick Links</div>
-					<div className="text-sm space-y-3 flex flex-col text-gray-300">
+					<div className="text-xs space-y-3 flex flex-col text-gray-300">
 						<Link href="/faqs" className="hover:underline">
 							FAQs
 						</Link>
@@ -47,7 +47,7 @@ export default function Footer() {
 				{/* Services */}
 				<div className="space-y-2">
 					<div className="text-lg font-semibold mb-4">Services</div>
-					<div className="text-sm space-y-3 flex flex-col text-gray-300">
+					<div className="text-xs space-y-3 flex flex-col text-gray-300">
 						<Link href="/services/sop" className="hover:underline">
 							Statement of Purpose (SOP)
 						</Link>

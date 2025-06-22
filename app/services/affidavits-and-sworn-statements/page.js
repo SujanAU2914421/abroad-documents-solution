@@ -18,12 +18,12 @@ export default function AffidavitsSwornStatements() {
 				</div>
 			</div>
 
-			<div className="relative flex px-32 pb-16">
-				<div className="relative w-[calc(100%-340px)] pr-8">
+			<div className="relative flex xl:px-32 lg:px-32 md:px-8 px-4 pb-16">
+				<div className="relative xl:w-[calc(100%-340px)] lg:w-[calc(100%-340px)] md:w-[calc(100%-340px)] w-full xl:pr-8 lg:pr-8 md:pr-4 pr-0">
 					<div className="relative h-[400px] w-full bg-gray-100"></div>
 
 					<div className="relative font-sans mt-4">
-						<h1 className="text-3xl font-bold">Legal Affidavits & Sworn Statement Services</h1>
+						<h1 className="text-2xl font-bold">Legal Affidavits & Sworn Statement Services</h1>
 
 						<p className="text-sm text-gray-700 leading-relaxed mb-4">
 							When it comes to legally verifying your statements or declarations,{" "}
@@ -39,7 +39,7 @@ export default function AffidavitsSwornStatements() {
 							business statement, we ensure it` s prepared and authenticated to meet all legal standards.
 						</p>
 
-						<h2 className="text-2xl font-semibold mt-6 mb-2">Common Uses for Affidavits</h2>
+						<h2 className="text-base text-gray-800 font-semibold mt-6 mb-2">Common Uses for Affidavits</h2>
 						<ul className="list-disc list-inside space-y-2 text-sm text-gray-700">
 							<li>
 								<strong>Identity Declarations:</strong> For name correction, address proof, and age
@@ -62,7 +62,7 @@ export default function AffidavitsSwornStatements() {
 							</li>
 						</ul>
 
-						<h2 className="text-2xl font-semibold mt-6 mb-2">What We Provide</h2>
+						<h2 className="text-base text-gray-800 font-semibold mt-6 mb-2">What We Provide</h2>
 						<p className="text-sm text-gray-700 leading-relaxed mb-2">
 							<strong>✔ Drafting Services:</strong> Custom-written affidavits based on your situation and
 							purpose
@@ -80,14 +80,16 @@ export default function AffidavitsSwornStatements() {
 							as 24 hours
 						</p>
 
-						<h2 className="text-2xl font-semibold mt-6 mb-2">Who Needs This?</h2>
+						<h2 className="text-base text-gray-800 font-semibold mt-6 mb-2">Who Needs This?</h2>
 						<p className="text-sm text-gray-700 leading-relaxed mb-4">
 							Our affidavit services are ideal for students, working professionals, landlords, tenants,
 							legal clients, NRIs, and anyone who requires a sworn statement for personal, official, or
 							international use.
 						</p>
 
-						<h2 className="text-2xl font-semibold mt-6 mb-2">Get Your Affidavit Prepared Today</h2>
+						<h2 className="text-base text-gray-800 font-semibold mt-6 mb-2">
+							Get Your Affidavit Prepared Today
+						</h2>
 						<p className="text-sm text-gray-700 leading-relaxed">
 							Need a trustworthy team to prepare your affidavit? <strong>Contact us today</strong> to get
 							started. Upload your requirements or visit our office for a hassle-free, professional
@@ -96,7 +98,7 @@ export default function AffidavitsSwornStatements() {
 					</div>
 				</div>
 
-				<div className="relative w-[340px] h-auto">
+				<div className="relative w-[340px] h-auto xl:blog lg:block md:block hidden">
 					<SideServicesBar />
 				</div>
 			</div>
