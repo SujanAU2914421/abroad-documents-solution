@@ -35,10 +35,10 @@ export default function Footer() {
 						<Link href="/search" className="hover:underline">
 							Search
 						</Link>
-						<Link href="/privacy-policy" className="hover:underline">
+						<Link href="/pages/privacy-policy" className="hover:underline">
 							Privacy Policy
 						</Link>
-						<Link href="/terms" className="hover:underline">
+						<Link href="/pages/terms-and-conditions" className="hover:underline">
 							Terms & Conditions
 						</Link>
 					</div>
