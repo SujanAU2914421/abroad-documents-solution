@@ -1,16 +1,54 @@
+"use client";
 import SendAMessage from "@/components/landingPageComponents/sendAMessage";
-import React from "react";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
-export default function page() {
+const translations = {
+	en: {
+		pageTitle: "Contact Us",
+		breadcrumbHome: "Home",
+		breadcrumbCurrent: "Contact Us",
+		contactTitle1: "Contact Us",
+		contactDesc1: "Anamanagar 29, Kathmandu, Nepal",
+		contactTitle2: "Call/Text/Viber/WhatsApp",
+		contactDesc2: "+977 982-6923934",
+		contactTitle3: "Email Us Today",
+		contactDesc3: "company@gmail.com",
+	},
+	ne: {
+		pageTitle: "सम्पर्क गर्नुहोस्",
+		breadcrumbHome: "गृहपृष्ठ",
+		breadcrumbCurrent: "सम्पर्क गर्नुहोस्",
+		contactTitle1: "सम्पर्क गर्नुहोस्",
+		contactDesc1: "अनामनगर २९, काठमाडौं, नेपाल",
+		contactTitle2: "फोन/टेक्स्ट/भाइबर/व्हाट्सएप",
+		contactDesc2: "+९७७ ९८२-६९२३९३४",
+		contactTitle3: "हामीलाई इमेल गर्नुहोस्",
+		contactDesc3: "company@gmail.com",
+	},
+};
+
+export default function Page() {
+	const [lang, setLang] = useState("en");
+
+	useEffect(() => {
+		const htmlLang = document.documentElement.lang?.split("-")[0] || "en";
+		setLang(htmlLang);
+	}, []);
+
+	const t = translations[lang] || translations.en;
+
 	return (
 		<div className="relative">
 			<div className="relative py-16">
-				<div className="relative flex justify-center font-bold text-3xl">Contact Us</div>
+				<div className="relative flex justify-center font-bold text-3xl">{t.pageTitle}</div>
 				<div className="relative text-sm flex justify-center">
 					<div className="flex items-center gap-2 mt-2 text-gray-700">
-						<div className="relative">Home</div>
+						<Link href="/">
+							<div className="relative">{t.breadcrumbHome}</div>
+						</Link>
 						<div className="relative">{">"}</div>
-						<div className="relative">Contact Us</div>
+						<div className="relative">{t.breadcrumbCurrent}</div>
 					</div>
 				</div>
 			</div>
@@ -32,8 +70,8 @@ export default function page() {
 						</svg>
 					</div>
 					<div className="relative grid gap-2">
-						<div className="font-bold">Contact Us</div>
-						<div className="text-xs text-gray-800">Anamanagar 29, Kathmandu, Nepal</div>
+						<div className="font-bold">{t.contactTitle1}</div>
+						<div className="text-xs text-gray-800 hover:underline">{t.contactDesc1}</div>
 					</div>
 				</div>
 				<div className="relative h-auto w-auto flex p-5 rounded-md shadow-xl border gap-5">
@@ -52,8 +90,8 @@ export default function page() {
 						</svg>
 					</div>
 					<div className="relative grid gap-2">
-						<div className="font-bold">Call/Text/Viber/WhatsApp</div>
-						<div className="text-xs text-gray-800">+977 9765979296</div>
+						<div className="font-bold">{t.contactTitle2}</div>
+						<div className="text-xs text-gray-800 hover:underline">{t.contactDesc2}</div>
 					</div>
 				</div>
 				<div className="relative h-auto w-auto flex p-5 rounded-md shadow-xl border gap-5">
@@ -73,8 +111,8 @@ export default function page() {
 						</svg>
 					</div>
 					<div className="relative grid gap-2">
-						<div className="font-bold">Email Us Today</div>
-						<div className="text-xs text-gray-800">company@gmail.com</div>
+						<div className="font-bold">{t.contactTitle3}</div>
+						<div className="text-xs text-gray-800 hover:underline">{t.contactDesc3}</div>
 					</div>
 				</div>
 			</div>

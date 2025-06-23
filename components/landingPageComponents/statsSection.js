@@ -2,19 +2,40 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
+const translations = {
+	en: {
+		labels: [
+			"Documents Notarized",
+			"Documents Translated",
+			"Success Rate",
+			"Court Marriage Act Translation",
+			"Reviews on Google",
+		],
+	},
+	ne: {
+		labels: [
+			"कागजात प्रमाणित गरियो",
+			"कागजात अनुवादित गरियो",
+			"सफलता दर",
+			"विवाह सम्बन्धी ऐन अनुवाद",
+			"गुगलमा समीक्षा",
+		],
+	},
+};
+
 export default function StatsSection() {
 	const sectionRef = useRef(null);
 	const [startCount, setStartCount] = useState(false);
 	const [counts, setCounts] = useState([0, 0, 0, 0, 0]);
+	const [lang, setLang] = useState("en");
 
 	const targetValues = [100000, 500000, 100, 6000, 3404];
-	const labels = [
-		"Documents Notarized",
-		"Documents Translated",
-		"Success Rate",
-		"Court Marriage Act Translation",
-		"Reviews on Google",
-	];
+
+	useEffect(() => {
+		// Detect language from <html lang=""> or default to English
+		const htmlLang = typeof document !== "undefined" ? document.documentElement.lang : "en";
+		setLang(htmlLang.startsWith("ne") ? "ne" : "en");
+	}, []);
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
@@ -37,7 +58,7 @@ export default function StatsSection() {
 	useEffect(() => {
 		if (!startCount) return;
 
-		const duration = 2000; // total animation time
+		const duration = 2000; // animation duration in ms
 		const frameRate = 30; // frames per second
 		const totalFrames = Math.round(duration / (1000 / frameRate));
 
@@ -53,6 +74,8 @@ export default function StatsSection() {
 
 		return () => clearInterval(interval);
 	}, [startCount]);
+
+	const labels = translations[lang].labels;
 
 	return (
 		<div

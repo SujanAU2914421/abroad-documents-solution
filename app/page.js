@@ -7,6 +7,7 @@ import Faqs from "@/components/landingPageComponents/faqs";
 import FirstSection from "@/components/landingPageComponents/firstSection";
 import Reviews from "@/components/landingPageComponents/review";
 import SendAMessage from "@/components/landingPageComponents/sendAMessage";
+import ServicesTest from "@/components/landingPageComponents/servicesTest";
 import StatsSection from "@/components/landingPageComponents/statsSection";
 import React from "react";
 
@@ -22,7 +23,7 @@ export default function MainPage() {
 			<AboutUsDemoContent />
 
 			<div className="relative">
-				<DiscoverOurServices />
+				<ServicesTest />
 			</div>
 			<div className="relative">
 				<Reviews />

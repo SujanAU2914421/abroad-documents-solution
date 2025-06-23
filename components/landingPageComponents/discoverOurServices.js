@@ -48,9 +48,6 @@ export default function DiscoverOurServices() {
 
 	return (
 		<div className="relative mb-16 mt-32 xl:px-32 lg:px-32 md:px-16 sm:px-8 px-4">
-			<div className="flex justify-center">
-				<div className="relative justify-center text-3xl font-bold">Areas of Experiences</div>
-			</div>
 			<div className="flex justify-center text-sm mt-2">Discover Our Services</div>
 			<div className="relative grid gap-y-8">
 				{services.slice(0, 4).map((service, index) => {

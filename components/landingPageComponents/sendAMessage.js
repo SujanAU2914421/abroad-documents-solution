@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function SendAMessage() {
 	const [formData, setFormData] = useState({
@@ -11,6 +11,47 @@ export default function SendAMessage() {
 
 	const [status, setStatus] = useState(null); // null | "loading" | "success" | "error"
 	const [errorMsg, setErrorMsg] = useState("");
+	const [lang, setLang] = useState("en");
+
+	useEffect(() => {
+		const htmlLang = document.documentElement.lang || "en";
+		setLang(htmlLang.startsWith("ne") ? "ne" : "en");
+	}, []);
+
+	const t = {
+		en: {
+			heading: "Send Us a Message",
+			fullName: "Full Name",
+			fullNamePlaceholder: "Your Name",
+			emailAddress: "Email Address",
+			emailPlaceholder: "you@example.com",
+			subject: "Subject",
+			subjectPlaceholder: "Subject",
+			message: "Message",
+			messagePlaceholder: "Write your message...",
+			sendButton: "Send Message",
+			sendingButton: "Sending...",
+			successMessage: "Message sent successfully! Thank you.",
+			errorMessage: "Error: ",
+		},
+		ne: {
+			heading: "हामीलाई सन्देश पठाउनुहोस्",
+			fullName: "पूरा नाम",
+			fullNamePlaceholder: "तपाईंको नाम",
+			emailAddress: "इमेल ठेगाना",
+			emailPlaceholder: "you@example.com",
+			subject: "विषय",
+			subjectPlaceholder: "विषय",
+			message: "सन्देश",
+			messagePlaceholder: "यहाँ आफ्नो सन्देश लेख्नुहोस्...",
+			sendButton: "सन्देश पठाउनुहोस्",
+			sendingButton: "पठाउँदैछ...",
+			successMessage: "सन्देश सफलतापूर्वक पठाइयो! धन्यवाद।",
+			errorMessage: "त्रुटि: ",
+		},
+	};
+
+	const translation = t[lang];
 
 	function handleChange(e) {
 		const { name, value } = e.target;
@@ -50,56 +91,64 @@ export default function SendAMessage() {
 			<div className="w-full flex mx-auto p-8 gap-8 bg-gray-200 xl:flex-nowrap lg:flex-nowrap md:flex-nowrap flex-wrap xl:*:w-1/2 lg:*:w-1/2 md:*:w-1/2 *:w-full">
 				{/* Form Section */}
 				<div className="relative h-auto">
-					<h2 className="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
+					<h2 className="text-2xl font-bold text-gray-800 mb-6">{translation.heading}</h2>
 
 					<form onSubmit={handleSubmit} className="space-y-5">
 						<div className="relative flex *:w-1/2 gap-4">
 							<div>
-								<label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+								<label className="block text-sm font-medium text-gray-700 mb-1">
+									{translation.fullName}
+								</label>
 								<input
 									type="text"
 									name="name"
 									value={formData.name}
 									onChange={handleChange}
 									required
-									placeholder="Your Name"
+									placeholder={translation.fullNamePlaceholder}
 									className="w-full px-4 py-2 border text-sm h-10 bg-white outline-none"
 								/>
 							</div>
 							<div>
-								<label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+								<label className="block text-sm font-medium text-gray-700 mb-1">
+									{translation.emailAddress}
+								</label>
 								<input
 									type="email"
 									name="email"
 									value={formData.email}
 									onChange={handleChange}
 									required
-									placeholder="you@example.com"
+									placeholder={translation.emailPlaceholder}
 									className="w-full px-4 py-2 border text-sm h-10 bg-white outline-none"
 								/>
 							</div>
 						</div>
 						<div>
-							<label className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+							<label className="block text-sm font-medium text-gray-700 mb-1">
+								{translation.subject}
+							</label>
 							<input
 								type="text"
 								name="subject"
 								value={formData.subject}
 								onChange={handleChange}
 								required
-								placeholder="Subject"
+								placeholder={translation.subjectPlaceholder}
 								className="w-full px-4 py-2 border text-sm h-10 bg-white outline-none"
 							/>
 						</div>
 						<div>
-							<label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+							<label className="block text-sm font-medium text-gray-700 mb-1">
+								{translation.message}
+							</label>
 							<textarea
 								name="message"
 								value={formData.message}
 								onChange={handleChange}
 								required
 								rows={4}
-								placeholder="Write your message..."
+								placeholder={translation.messagePlaceholder}
 								className="w-full px-4 py-2 border text-sm min-h-32 bg-white outline-none"
 							></textarea>
 						</div>
@@ -109,15 +158,17 @@ export default function SendAMessage() {
 							disabled={status === "loading"}
 							className="w-full bg-purple-600 cursor-pointer font-bold text-sm h-10 text-white flex items-center justify-center rounded-md hover:bg-purple-700 transition-colors duration-200 disabled:opacity-60"
 						>
-							{status === "loading" ? "Sending..." : "Send Message"}
+							{status === "loading" ? translation.sendingButton : translation.sendButton}
 						</button>
 					</form>
 
 					{/* Status messages */}
 					{status === "success" && (
-						<p className="mt-4 text-green-600 font-semibold">Message sent successfully! Thank you.</p>
+						<p className="mt-4 text-green-600 font-semibold">{translation.successMessage}</p>
 					)}
-					{status === "error" && <p className="mt-4 text-red-600 font-semibold">Error: {errorMsg}</p>}
+					{status === "error" && (
+						<p className="mt-4 text-red-600 font-semibold">{translation.errorMessage + errorMsg}</p>
+					)}
 				</div>
 
 				{/* Map Section */}
