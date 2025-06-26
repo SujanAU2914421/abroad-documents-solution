@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 const translations = {
 	en: {
+		title: "Our Achievements",
 		labels: [
 			"Documents Notarized",
 			"Documents Translated",
@@ -13,6 +14,7 @@ const translations = {
 		],
 	},
 	ne: {
+		title: "हाम्रो उपलब्धिहरू",
 		labels: [
 			"कागजात प्रमाणित गरियो",
 			"कागजात अनुवादित गरियो",
@@ -32,7 +34,6 @@ export default function StatsSection() {
 	const targetValues = [100000, 500000, 100, 6000, 3404];
 
 	useEffect(() => {
-		// Detect language from <html lang=""> or default to English
 		const htmlLang = typeof document !== "undefined" ? document.documentElement.lang : "en";
 		setLang(htmlLang.startsWith("ne") ? "ne" : "en");
 	}, []);
@@ -58,10 +59,9 @@ export default function StatsSection() {
 	useEffect(() => {
 		if (!startCount) return;
 
-		const duration = 2000; // animation duration in ms
-		const frameRate = 30; // frames per second
+		const duration = 2000;
+		const frameRate = 30;
 		const totalFrames = Math.round(duration / (1000 / frameRate));
-
 		let frame = 0;
 
 		const interval = setInterval(() => {
@@ -75,24 +75,30 @@ export default function StatsSection() {
 		return () => clearInterval(interval);
 	}, [startCount]);
 
-	const labels = translations[lang].labels;
+	const { title, labels } = translations[lang];
 
 	return (
-		<div
+		<section
 			ref={sectionRef}
+			aria-labelledby="stats-title"
 			className="relative h-auto py-16 w-full justify-center bg-gray-800 text-white my-32 xl:px-32 lg:px-32 md:px-16 sm:px-8 px-4 flex items-center"
 		>
-			<div className="relative w-full h-auto grid xl:grid-cols-5 lg:grid-cols-5 md:grid-cols-4 grid-cols-2 gap-8">
-				{counts.map((count, idx) => (
-					<div key={idx} className="relative w-full">
-						<div className="relative text-4xl font-bold text-center">
-							{count.toLocaleString()}
-							{idx === 2 ? "%" : "+"}
+			<div className="w-full">
+				<h2 id="stats-title" className="text-2xl font-semibold text-center mb-12 tracking-wide">
+					{title}
+				</h2>
+				<div className="relative w-full h-auto grid xl:grid-cols-5 lg:grid-cols-5 md:grid-cols-4 grid-cols-2 gap-8">
+					{counts.map((count, idx) => (
+						<div key={idx} className="relative w-full" aria-label={`${labels[idx]}: ${count}`}>
+							<div className="text-4xl font-bold text-center">
+								{count.toLocaleString()}
+								{idx === 2 ? "%" : "+"}
+							</div>
+							<p className="text-sm text-center mt-2">{labels[idx]}</p>
 						</div>
-						<div className="relative text-sm text-center mt-2">{labels[idx]}</div>
-					</div>
-				))}
+					))}
+				</div>
 			</div>
-		</div>
+		</section>
 	);
 }

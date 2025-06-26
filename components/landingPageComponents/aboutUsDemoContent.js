@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -19,7 +20,7 @@ const translations = {
 };
 
 export default function AboutUsDemoContent() {
-	const mainContentRef = useRef();
+	const mainContentRef = useRef(null);
 	const transitionYRef = useRef([]);
 	const [lang, setLang] = useState("en");
 
@@ -30,7 +31,6 @@ export default function AboutUsDemoContent() {
 	};
 
 	useEffect(() => {
-		// Detect language from <html lang> attribute or default to English
 		if (typeof document !== "undefined") {
 			const htmlLang = document.documentElement.lang || "en";
 			setLang(htmlLang.startsWith("ne") ? "ne" : "en");
@@ -53,11 +53,7 @@ export default function AboutUsDemoContent() {
 					observer.disconnect();
 				}
 			},
-			{
-				root: null,
-				rootMargin: "0px",
-				threshold: 0.7,
-			}
+			{ rootMargin: "0px", threshold: 0.7 }
 		);
 
 		observer.observe(mainContentRef.current);
@@ -68,57 +64,70 @@ export default function AboutUsDemoContent() {
 	const { hashtag, companyName, description, buttonText } = translations[lang];
 
 	return (
-		<div className="relative h-auto xl:px-32 lg:px-32 md:px-16 sm:px-8 px-4 flex items-center gap-16 xl:*:w-1/2 lg:*:w-1/2 xl:flex-nowrap lg:flex-nowrap flex-wrap *:w-full">
+		<section className="relative flex flex-wrap gap-16 xl:px-32 lg:px-32 md:px-16 sm:px-8 px-4 items-center">
+			{/* Image container with alt text for accessibility */}
 			<div
+				aria-hidden="true"
 				style={{ transform: "translateY(10px)", opacity: 0 }}
 				ref={setRef}
-				className="relative h-96 rounded-3xl shadow-xl bg-[url(https://i.pinimg.com/1200x/e7/ba/3a/e7ba3a5da698c8403ae732c713a4c473.jpg)] bg-center bg-cover "
-			></div>
-			<div className="relative flex items-center">
-				<div className="relative" ref={mainContentRef}>
-					<div className="relative flex" style={{ transform: "translateX(10px)", opacity: 0 }} ref={setRef}>
-						<div className="relative text-xs bg-gray-700 text-white py-1 px-3">{hashtag}</div>
-					</div>
-					<div
-						className="text-2xl font-bold mt-1 leading-12 tracking-wide"
-						style={{ transform: "translateX(10px)", opacity: 0 }}
-						ref={setRef}
-					>
-						{companyName}
-					</div>
-					<div className="relative mt-2" style={{ transform: "translateX(10px)", opacity: 0 }} ref={setRef}>
-						<div className="relative max-w-md tracking-wide text-gray-500 text-sm leading-6 [word-spacing:3px]">
-							{description}
-						</div>
-					</div>
-					<div
-						className="relative flex mt-6"
-						style={{ transform: "translateX(10px)", opacity: 0 }}
-						ref={setRef}
-					>
-						<Link href="/about-us">
-							<div className="relative text-sm text-white bg-purple-600 font-bold rounded-md shadow-xl shadow-gray-200 cursor-pointer flex items-center justify-center px-8 h-10 gap-2">
-								<span>{buttonText}</span>
-								<span>
-									<svg
-										width="17"
-										height="17"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										strokeLinecap="round"
-										strokeLinejoin="round"
-									>
-										<line x1="5" y1="12" x2="19" y2="12"></line>
-										<polyline points="12 5 19 12 12 19"></polyline>
-									</svg>
-								</span>
-							</div>
-						</Link>
-					</div>
-				</div>
+				className="relative h-96 rounded-3xl shadow-xl overflow-hidden flex-shrink-0 w-full md:w-1/2"
+			>
+				<Image
+					src="https://i.pinimg.com/1200x/e7/ba/3a/e7ba3a5da698c8403ae732c713a4c473.jpg"
+					alt="About Us background image"
+					fill
+					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+					className="object-cover rounded-3xl"
+					priority // optional, if you want this image to load eagerly for better LCP
+				/>
 			</div>
-		</div>
+
+			{/* Text content */}
+			<article className="relative flex flex-col flex-grow max-w-md md:max-w-lg" ref={mainContentRef}>
+				<div className="relative flex" style={{ transform: "translateX(10px)", opacity: 0 }} ref={setRef}>
+					<p className="relative text-xs bg-gray-700 text-white py-1 px-3 inline-block rounded">{hashtag}</p>
+				</div>
+				<h2
+					className="text-2xl font-bold mt-1 leading-12 tracking-wide"
+					style={{ transform: "translateX(10px)", opacity: 0 }}
+					ref={setRef}
+				>
+					{companyName}
+				</h2>
+				<p
+					className="relative mt-2 max-w-md tracking-wide text-gray-500 text-sm leading-6 [word-spacing:3px]"
+					style={{ transform: "translateX(10px)", opacity: 0 }}
+					ref={setRef}
+				>
+					{description}
+				</p>
+				<div className="relative flex mt-6" style={{ transform: "translateX(10px)", opacity: 0 }} ref={setRef}>
+					<Link
+						href="/about-us"
+						className="relative text-sm text-white bg-purple-600 font-bold rounded-md shadow-xl shadow-gray-200 cursor-pointer flex items-center justify-center px-8 h-10 gap-2"
+						aria-label={buttonText}
+					>
+						<span>{buttonText}</span>
+						<span>
+							<svg
+								width="17"
+								height="17"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth="2"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								aria-hidden="true"
+								focusable="false"
+							>
+								<line x1="5" y1="12" x2="19" y2="12" />
+								<polyline points="12 5 19 12 12 19" />
+							</svg>
+						</span>
+					</Link>
+				</div>
+			</article>
+		</section>
 	);
 }

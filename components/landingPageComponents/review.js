@@ -44,10 +44,11 @@ export default function Reviews() {
 	}, []);
 
 	const setAnimatedRef = (el, i) => {
-		if (el) animatedRefs.current[i] = el;
+		if (el && animatedRefs.current[i] !== el) {
+			animatedRefs.current[i] = el;
+		}
 	};
 
-	// Reviews content with author names
 	const reviews = [
 		{
 			text_en: "Fast, professional, and very friendly. They made the notarization process so easy!",
@@ -81,7 +82,6 @@ export default function Reviews() {
 		},
 	];
 
-	// Translation for left section text
 	const translations = {
 		en: {
 			clientTestimonials: "Client Testimonials",
@@ -97,14 +97,15 @@ export default function Reviews() {
 			hearFromCustomers:
 				"हाम्रा सन्तुष्ट ग्राहकहरूबाट सुनौं जसले नोटराइजेशन, प्रमाणिकरण, र अनुवाद सेवाहरूमा हामीलाई विश्वास गरेका छन्। तपाईंको शान्ति हाम्रो सबैभन्दा ठूलो पुरस्कार हो।",
 			readAllTestimonials: "सबै प्रशंसापत्रहरू पढ्नुहोस्",
-			testimonialsLink: "/testimonials", // adjust if Nepali URL is different
+			testimonialsLink: "/testimonials",
 		},
 	};
 
 	const t = translations[lang];
 
 	return (
-		<div
+		<section
+			aria-label={t.clientTestimonials}
 			ref={sectionRef}
 			className="relative flex flex-col xl:flex-row gap-8 items-start xl:items-center xl:px-32 lg:px-32 md:px-16 sm:px-8 px-4 py-16"
 		>
@@ -114,12 +115,15 @@ export default function Reviews() {
 				style={{ transform: "translateY(10px)", opacity: 0 }}
 				ref={(el) => setAnimatedRef(el, 0)}
 			>
-				<div className="text-sm bg-purple-200 px-3 py-1 inline-block">{t.clientTestimonials}</div>
-				<div className="mt-3 font-bold text-4xl">{t.whatOurClientsSay}</div>
-				<div className="text-sm tracking-wide max-w-md leading-5 mt-4 text-gray-600">{t.hearFromCustomers}</div>
-				<div className="mt-5">
+				<p className="text-sm bg-purple-200 px-3 py-1 inline-block">{t.clientTestimonials}</p>
+				<h2 className="mt-3 font-bold text-4xl">{t.whatOurClientsSay}</h2>
+				<p className="text-sm tracking-wide max-w-md leading-5 mt-4 text-gray-600">{t.hearFromCustomers}</p>
+				<div className="mt-5 flex">
 					<Link href={t.testimonialsLink}>
-						<HeroButton>{t.readAllTestimonials}</HeroButton>
+						<HeroButton>
+							<div className="relative">{t.readAllTestimonials}</div>
+							<div className="relative pl-4 text-xl">{">"}</div>
+						</HeroButton>
 					</Link>
 				</div>
 			</div>
@@ -127,20 +131,20 @@ export default function Reviews() {
 			{/* Right Section - Reviews */}
 			<div className="xl:w-3/5 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
 				{reviews.map(({ text_en, text_ne, author }, i) => (
-					<div
+					<blockquote
 						key={i}
 						className="bg-white rounded-lg p-6 border border-gray-500 flex flex-col"
 						style={{ transform: "translateY(10px)", opacity: 0 }}
-						ref={(el) => setAnimatedRef(el, i + 1)} // +1 since 0 is left section
+						ref={(el) => setAnimatedRef(el, i + 1)}
 					>
-						<div className="text-gray-700">
+						<div className="text-gray-700" aria-hidden="true">
 							<QuoteSvg />
 						</div>
-						<div className="text-gray-700 text-xs mt-2 flex-grow">{lang === "ne" ? text_ne : text_en}</div>
-						<div className="mt-4 font-semibold text-sm">– {author}</div>
-					</div>
+						<p className="text-gray-700 text-xs mt-2 flex-grow">{lang === "ne" ? text_ne : text_en}</p>
+						<footer className="mt-4 font-semibold text-sm">– {author}</footer>
+					</blockquote>
 				))}
 			</div>
-		</div>
+		</section>
 	);
 }

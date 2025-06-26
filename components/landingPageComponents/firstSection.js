@@ -37,7 +37,7 @@ export default function FirstSection() {
 	const OnloadAnimationElements = useRef([]);
 	OnloadAnimationElements.current = [];
 
-	const [language, setLanguage] = useState("en"); // Default to English
+	const [language, setLanguage] = useState("en");
 
 	const setRef = (el) => {
 		if (el && !OnloadAnimationElements.current.includes(el)) {
@@ -45,7 +45,6 @@ export default function FirstSection() {
 		}
 	};
 
-	// 🌐 Detect <html lang=""> instead of browser setting
 	useEffect(() => {
 		if (typeof document !== "undefined") {
 			const htmlLang = document.documentElement.lang?.split("-")[0] || "en";
@@ -69,47 +68,69 @@ export default function FirstSection() {
 	const t = content[language];
 
 	return (
-		<div className="relative h-auto xl:px-32 lg:px-32 md:px-16 sm:px-8 px-4 flex items-center gap-8 xl:*:w-1/2 lg:*:w-1/2 xl:flex-nowrap lg:flex-nowrap flex-wrap-reverse *:w-full">
-			<div className="relative flex items-center">
+		<section
+			aria-labelledby="homepage-hero-title"
+			className="relative h-auto xl:px-32 lg:px-32 md:px-16 sm:px-8 px-4 flex items-center gap-8 xl:*:w-1/2 lg:*:w-1/2 xl:flex-nowrap lg:flex-nowrap flex-wrap-reverse *:w-full"
+		>
+			<article className="relative flex items-center">
 				<div className="relative">
-					<div
-						className="relative flex transition-all duration-500 ease-out"
+					<p
+						className="relative text-sm bg-purple-200 p-1 transition-all duration-500 ease-out"
 						style={{ transform: "translateX(30px)", opacity: 0 }}
 						ref={setRef}
 					>
-						<div className="relative text-sm bg-purple-200 p-1">{t.tagline}</div>
-					</div>
-					<div
+						{t.tagline}
+					</p>
+
+					<h1
+						id="homepage-hero-title"
 						className="text-4xl font-bold mt-2 leading-12 font-sans tracking-wide transition-all duration-500 ease-out"
 						style={{ transform: "translateX(30px)", opacity: 0 }}
 						ref={setRef}
 					>
 						{t.heading}
-					</div>
-					<div
-						className="relative mt-4 transition-all duration-500 ease-out"
+					</h1>
+
+					<p
+						className="relative mt-4 max-w-md tracking-wide transition-all duration-500 ease-out"
 						style={{ transform: "translateX(30px)", opacity: 0 }}
 						ref={setRef}
 					>
-						<div className="relative max-w-md tracking-wide">{t.description}</div>
-					</div>
+						{t.description}
+					</p>
+
 					<div
 						className="relative flex mt-4 transition-all duration-500 ease-out"
 						style={{ transform: "translateX(30px)", opacity: 0 }}
 						ref={setRef}
 					>
-						<Link href={t.buttonLink}>
-							<div className="relative text-sm text-white bg-purple-600 font-bold rounded-md shadow-xl shadow-gray-200 cursor-pointer flex items-center justify-center px-8 h-10 gap-2">
-								{t.buttonText}
-							</div>
+						<Link
+							href={t.buttonLink}
+							className="relative text-sm text-white bg-purple-600 font-bold rounded-md shadow-xl shadow-gray-200 cursor-pointer flex items-center justify-center px-8 h-10 gap-2"
+							aria-label={t.buttonText}
+						>
+							{t.buttonText}
+							<svg
+								width="17"
+								height="17"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth="2"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+							>
+								<line x1="5" y1="12" x2="19" y2="12"></line>
+								<polyline points="12 5 19 12 12 19"></polyline>
+							</svg>
 						</Link>
 					</div>
 				</div>
-			</div>
+			</article>
 
 			<div className="relative h-[80vh]">
 				<ImagesSlider />
 			</div>
-		</div>
+		</section>
 	);
 }

@@ -103,7 +103,7 @@ export default function Navbar() {
 										<div className="w-[300px]">
 											{services.map((service, index) => (
 												<Link href={service.link} key={index}>
-													<div className="py-2 duration-200 w-full hover:bg-indigo-500 hover:text-white flex items-center px-4 rounded-md cursor-pointer">
+													<div className="py-3 duration-200 w-full hover:bg-indigo-500 hover:text-white flex items-center px-4 rounded-md cursor-pointer">
 														{service.name}
 													</div>
 												</Link>
@@ -130,7 +130,7 @@ export default function Navbar() {
 						<div className="relative xl:flex lg:flex md:flex sm:flex hidden">
 							<a href="tel:+9779812818289">
 								<div className="relative h-10 px-8 rounded-full space-x-1.5 bg-purple-700 hover:bg-purple-800 duration-200 text-white text-xs flex items-center justify-center">
-									<span className="font-bold">{t.dial}</span>
+									{/* <span className="font-bold">{t.dial}</span> */}
 									<span className="font-bold tracking-wide">{t.phoneNumber}</span>
 									<span className="pl-2">
 										<svg

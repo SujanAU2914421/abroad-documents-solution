@@ -4,7 +4,7 @@ import DiscoverOurServices from "@/components/landingPageComponents/discoverOurS
 import FirstSection from "@/components/about-us/firstSection";
 import WhyChooseUs from "@/components/whyChooseUs";
 import LimitedOffer from "@/components/landingPageComponents/limitedOffer";
-import ServicesTest from "@/components/landingPageComponents/servicesTest";
+import ServicesTest from "@/components/landingPageComponents/servicesSection";
 
 const translations = {
 	en: {

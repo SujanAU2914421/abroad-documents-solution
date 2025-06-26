@@ -1,6 +1,6 @@
 "use client";
 import OurServices from "@/components/landingPageComponents/ourServices";
-import ServicesTest from "@/components/landingPageComponents/servicesTest";
+import ServicesTest from "@/components/landingPageComponents/servicesSection";
 import React from "react";
 
 export default function page() {

@@ -7,7 +7,7 @@ import Faqs from "@/components/landingPageComponents/faqs";
 import FirstSection from "@/components/landingPageComponents/firstSection";
 import Reviews from "@/components/landingPageComponents/review";
 import SendAMessage from "@/components/landingPageComponents/sendAMessage";
-import ServicesTest from "@/components/landingPageComponents/servicesTest";
+import ServicesTest from "@/components/landingPageComponents/servicesSection";
 import StatsSection from "@/components/landingPageComponents/statsSection";
 import React from "react";
 
