@@ -21,8 +21,8 @@ const geistMono = Geist_Mono({
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<div className="relative h-screen w-screen overflow-x-hidden overflow-y-auto tracking-wide scroll-smooth">
+			<body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}>
+				<div className="h-auto w-screen min-h-screen">
 					<MainContextProvider>
 						<BlogContextProvider>
 							<Navbar />

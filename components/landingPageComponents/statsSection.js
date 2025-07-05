@@ -81,7 +81,7 @@ export default function StatsSection() {
 		<section
 			ref={sectionRef}
 			aria-labelledby="stats-title"
-			className="relative h-auto py-16 w-full justify-center bg-gray-800 text-white my-32 xl:px-32 lg:px-32 md:px-16 sm:px-8 px-4 flex items-center"
+			className="relative h-auto py-16 w-full justify-center bg-purple-700 text-white my-32 xl:px-32 lg:px-32 md:px-16 sm:px-8 px-4 flex items-center"
 		>
 			<div className="w-full">
 				<h2 id="stats-title" className="text-2xl font-semibold text-center mb-12 tracking-wide">

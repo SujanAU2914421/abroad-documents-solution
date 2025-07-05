@@ -10,20 +10,6 @@ const content = {
 		buttonText: "Checkout our services",
 		buttonLink: "/services",
 	},
-	hi: {
-		tagline: "विश्वसनीय नोटरी सेवाएं – तेज, सुरक्षित और हमेशा आपके साथ।",
-		heading: "नेपाल में प्रमाणित नोटरी, प्रमाणन और अनुवाद सेवाएं",
-		description: "प्रमाणित पेशेवरों द्वारा निर्बाध नोटरीकरण – कभी भी, कहीं भी।",
-		buttonText: "हमारी सेवाएं देखें",
-		buttonLink: "/services",
-	},
-	ur: {
-		tagline: "قابل اعتماد نوٹری خدمات – تیز، محفوظ، اور ہمیشہ آپ کے ساتھ۔",
-		heading: "نیپال میں مصدقہ نوٹری، تصدیق، اور ترجمہ کی خدمات",
-		description: "مصدقہ پیشہ ور افراد سے آسان نوٹری کی سہولت — جب چاہیں، جہاں چاہیں۔",
-		buttonText: "ہماری خدمات دیکھیں",
-		buttonLink: "/services",
-	},
 	ne: {
 		tagline: "भरपर्दो नोटरी सेवा — छिटो, सुरक्षित, र सधैं तपाईंको साथमा।",
 		heading: "नेपालमा प्रमाणित नोटरी, प्रमाणीकरण, र अनुवाद सेवाहरू",
@@ -74,17 +60,18 @@ export default function FirstSection() {
 		>
 			<article className="relative flex items-center">
 				<div className="relative">
-					<p
-						className="relative text-sm bg-purple-200 p-1 transition-all duration-500 ease-out"
-						style={{ transform: "translateX(30px)", opacity: 0 }}
-						ref={setRef}
-					>
-						{t.tagline}
-					</p>
-
+					<div className="relative flex">
+						<p
+							className="relative text-sm bg-purple-200 p-1 transition-all duration-500 ease-out"
+							style={{ transform: "translateX(30px)", opacity: 0 }}
+							ref={setRef}
+						>
+							{t.tagline}
+						</p>
+					</div>
 					<h1
 						id="homepage-hero-title"
-						className="text-4xl font-bold mt-2 leading-12 font-sans tracking-wide transition-all duration-500 ease-out"
+						className="text-3xl font-bold mt-2 leading-11 font-sans tracking-wide transition-all duration-500 ease-out"
 						style={{ transform: "translateX(30px)", opacity: 0 }}
 						ref={setRef}
 					>
@@ -100,7 +87,7 @@ export default function FirstSection() {
 					</p>
 
 					<div
-						className="relative flex mt-4 transition-all duration-500 ease-out"
+						className="relative flex mt-8 transition-all duration-500 ease-out"
 						style={{ transform: "translateX(30px)", opacity: 0 }}
 						ref={setRef}
 					>
