@@ -34,9 +34,9 @@ export default function Footer() {
 
 			contactInfoTitle: "Contact Info",
 			phoneLabel: "📞 ",
-			phoneNumber: "+977 9765979296",
+			phoneNumber: "+977 9826923934",
 			emailLabel: "📧 ",
-			email: "info@notarynepal.com",
+			email: "ads.services@gmail.com",
 			address: "📍 Anamanagar 29, Kathmandu, Nepal",
 			hours: "🕒 Sun - Fri, 10:00 AM - 6:00 PM",
 			support: "✅ Support available 24/7",
@@ -66,9 +66,9 @@ export default function Footer() {
 
 			contactInfoTitle: "सम्पर्क विवरण",
 			phoneLabel: "📞 ",
-			phoneNumber: "+९७७ ९७६५९७९२९६",
+			phoneNumber: "+९७७ 9826923934",
 			emailLabel: "📧 ",
-			email: "info@notarynepal.com",
+			email: "ads.services@gmail.com",
 			address: "📍 अनामनगर २९, काठमाडौं, नेपाल",
 			hours: "🕒 आइतबार - शुक्रबार, बिहान १०:०० देखि साँझ ६:००",
 			support: "✅ २४/७ सहयोग उपलब्ध छ",
@@ -85,7 +85,7 @@ export default function Footer() {
 				{/* About */}
 				<div className="space-y-4">
 					<div className="text-xl font-semibold">{t.aboutTitle}</div>
-					<div className="text-xs text-gray-400">
+					<div className="text-xs text-gray-400 leading-5">
 						<span>{t.aboutDesc}</span>
 					</div>
 					<Link href="/about-us" className="text-purple-400 hover:underline text-sm block">

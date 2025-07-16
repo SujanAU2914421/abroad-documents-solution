@@ -42,21 +42,28 @@ export default function Navbar() {
 	const { services } = useMainContext();
 	const [language, setLanguage] = useState("en");
 	const [scrolled, setScrolled] = useState(false);
+	const [showNavbar, setShowNavbar] = useState(true);
 
 	useEffect(() => {
-		if (typeof document !== "undefined") {
-			const htmlLang = document.documentElement.lang?.split("-")[0] || "en";
-			if (Object.keys(translations).includes(htmlLang)) {
-				setLanguage(htmlLang);
-			}
-		}
+		let lastScrollY = window.scrollY;
+		let scrollTimeout;
 
 		const handleScroll = () => {
-			if (window.scrollY > 0) {
-				setScrolled(true);
+			const currentScrollY = window.scrollY;
+
+			if (currentScrollY > lastScrollY) {
+				setShowNavbar(false); // scrolling down
 			} else {
-				setScrolled(false);
+				setShowNavbar(true); // scrolling up
 			}
+
+			setScrolled(currentScrollY > 0);
+			lastScrollY = currentScrollY;
+
+			clearTimeout(scrollTimeout);
+			scrollTimeout = setTimeout(() => {
+				setShowNavbar(true);
+			}, 150);
 		};
 
 		window.addEventListener("scroll", handleScroll);
@@ -71,8 +78,8 @@ export default function Navbar() {
 				<SubNavbar />
 			</div>
 			<div
-				className={`fixed z-20 w-full h-auto xl:px-16 duration-300 lg:px-16 md:px-8 px-4 ${
-					scrolled ? "text-gray-800 top-2 bg-transparent" : "text-white top-8 bg-[#100f3a]"
+				className={`fixed z-20 w-full h-auto xl:px-16 duration-300 lg:px-16 md:px-8 px-4 transition-all ${
+					!scrolled ? "top-8 text-white bg-[#100f3a]" : showNavbar ? "top-2 text-gray-800 bg-transparent" : "-top-32"
 				}`}
 			>
 				<div

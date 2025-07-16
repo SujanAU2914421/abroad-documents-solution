@@ -7,6 +7,7 @@ import { MainContextProvider } from "@/context/mainContects";
 import BlogContextProvider from "@/context/blogContext";
 import Footer from "@/components/footer";
 import SocialLinks from "@/components/socialLinks";
+import HelperPopUp from "@/components/helper";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
 				<div className="h-auto w-screen min-h-screen bg-gradient-to-br from-indigo-100 to-white">
 					<MainContextProvider>
 						<BlogContextProvider>
+							<HelperPopUp />
 							<Navbar />
 							<SocialLinks />
 							{children}
