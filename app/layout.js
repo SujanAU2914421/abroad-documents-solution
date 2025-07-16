@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}>
-				<div className="h-auto w-screen min-h-screen">
+				<div className="h-auto w-screen min-h-screen bg-gradient-to-br from-indigo-100 to-white">
 					<MainContextProvider>
 						<BlogContextProvider>
 							<Navbar />

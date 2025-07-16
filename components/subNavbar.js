@@ -21,8 +21,12 @@ export default function SubNavbar() {
 	return (
 		<div className="relative flex justify-end gap-8 py-1">
 			<div className="relative flex items-center gap-4">
-				<div className="relative text-xs flex">📞 +977 982-6923934</div>
-				<div className="relative text-xs">📧 ads.doc.services@gmail.com</div>
+				<div className="relative hover:bg-gray-200 px-2 py-1 cursor-pointer rounded-md font-bold text-xs flex">
+					📞 +977 982-6923934
+				</div>
+				<div className="relative hover:bg-gray-200 px-2 py-1 cursor-pointer rounded-md font-bold text-xs">
+					📧 ads.doc.services@gmail.com
+				</div>
 			</div>
 			<div className="flex gap-2 text-[10px]">
 				<button

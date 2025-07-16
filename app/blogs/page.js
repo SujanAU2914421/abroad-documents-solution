@@ -8,7 +8,7 @@ export default function Page() {
 
 	return (
 		<div>
-			<div className="relative py-16">
+			<div className="relative py-16 mt-16">
 				<div className="relative flex justify-center font-bold text-3xl">Blogs</div>
 				<div className="relative text-sm flex justify-center">
 					<div className="flex items-center gap-2 mt-2 text-gray-700">
@@ -34,9 +34,7 @@ export default function Page() {
 													day: "2-digit",
 												})}
 											</div>
-											<div className="relative text-xl font-bold group-hover:text-white">
-												{blog.topic}
-											</div>
+											<div className="relative text-xl font-bold group-hover:text-white">{blog.topic}</div>
 											<div className="relative text-xs line-clamp-4 mt-2 text-gray-600 group-hover:text-white tracking-wide">
 												{blog.description.replace(/<[^>]+>/g, "").slice(0, 300) + "..."}
 											</div>

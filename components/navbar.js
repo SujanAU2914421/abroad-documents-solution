@@ -8,8 +8,6 @@ import {
 	NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { DialogTitle } from "@radix-ui/react-dialog";
 import { useMainContext } from "@/context/mainContects";
 import Link from "next/link";
 import SubNavbar from "./subNavbar";
@@ -68,59 +66,72 @@ export default function Navbar() {
 	const t = translations[language];
 
 	return (
-		<>
-			<div className="relative xl:px-16 lg:px-16 md:px-8 px-4">
+		<div className="relative">
+			<div className={`relative xl:px-16 lg:px-16 md:px-8 px-4 text-white bg-[#100f3a]`}>
 				<SubNavbar />
 			</div>
-			<div className={`sticky top-0 z-20 w-full h-auto xl:px-16 lg:px-16 md:px-8 px-4`}>
+			<div
+				className={`fixed z-20 w-full h-auto xl:px-16 duration-300 lg:px-16 md:px-8 px-4 ${
+					scrolled ? "text-gray-800 top-2 bg-transparent" : "text-white top-8 bg-[#100f3a]"
+				}`}
+			>
 				<div
-					className={`relative px-4 py-2 flex items-center justify-between bg-white border rounded-full text-black transition-all duration-300 ${
-						scrolled ? "shadow border-gray-200 translate-y-[5px]" : "border-white"
+					className={`relative px-4 py-2 flex items-center justify-between border rounded-full transition-all duration-300 ${
+						scrolled ? "shadow border-gray-200 bg-white translate-y-[5px]" : "border-[#100f3a] bg-[#100f3a]"
 					}`}
 				>
 					{/* Left company logo & name */}
-					<div className="relative flex gap-4 items-center">
-						<div className="relative">
-							<svg
-								width="30"
-								height="30"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								strokeWidth="2"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							>
-								<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-								<path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-							</svg>
+					<Link href="/">
+						<div className="relative flex gap-4 items-center">
+							<div className="relative">
+								<div
+									className="relative h-16 w-16"
+									style={{
+										background: `url('/assets/logo/WhatsApp Image 2025-07-16 at 13.35.49_6d5bac5c.png') center / cover`,
+									}}
+								></div>
+							</div>
+							<div className="relative">
+								{/* Always English */}
+								<div className="relative text-[16px] font-bold">Abroad Documents Solution</div>
+								<div className="relative text-[14px] mt-[1px]"># Gautam Law Chamber</div>
+							</div>
 						</div>
-						<div className="relative">
-							{/* Always English */}
-							<div className="relative text-[12px] font-bold">Abroad Documents Solution</div>
-							<div className="relative text-[10px] mt-[1px]">Gautam Law Chamber</div>
-						</div>
-					</div>
+					</Link>
 
 					{/* Desktop menu */}
-					<div className="relative xl:flex lg:flex hidden items-center gap-8 text-xs font-medium">
+					<div className="relative xl:flex lg:flex hidden items-center gap-4 font-medium">
 						<Link href="/">
-							<div className="cursor-pointer">{t.home}</div>
+							<div
+								className={`cursor-pointer text-[13px] px-3 h-10 flex items-center ${
+									scrolled ? "hover:bg-gray-800 hover:text-white" : "hover:bg-white hover:text-black"
+								} rounded hover:font-bold duration-150`}
+							>
+								{t.home}
+							</div>
 						</Link>
 						<Link href="/about-us">
-							<div className="cursor-pointer">{t.aboutUs}</div>
+							<div
+								className={`cursor-pointer text-[13px] px-3 h-10 flex items-center ${
+									scrolled ? "hover:bg-gray-800 hover:text-white" : "hover:bg-white hover:text-black"
+								} rounded hover:font-bold duration-150`}
+							>
+								{t.aboutUs}
+							</div>
 						</Link>
 						<NavigationMenu>
 							<NavigationMenuList>
 								<NavigationMenuItem>
-									<NavigationMenuTrigger>
-										<div className="cursor-pointer">{t.services}</div>
+									<NavigationMenuTrigger
+										className={`relative ${scrolled ? "text-gray-700 bg-gray-200" : "text-gray-200 bg-[#0f0f41]"}`}
+									>
+										<div className="cursor-pointer text-[13px]">{t.services}</div>
 									</NavigationMenuTrigger>
 									<NavigationMenuContent>
 										<div className="w-[300px]">
 											{services.map((service, index) => (
 												<Link href={service.link} key={index}>
-													<div className="py-3 duration-200 w-full hover:bg-indigo-500 hover:text-white flex items-center px-4 rounded-md cursor-pointer">
+													<div className="py-3 duration-200 w-full hover:bg-purple-500 hover:text-white flex items-center px-4 rounded-md cursor-pointer text-xs">
 														{service.name}
 													</div>
 												</Link>
@@ -131,13 +142,31 @@ export default function Navbar() {
 							</NavigationMenuList>
 						</NavigationMenu>
 						<Link href="/blogs">
-							<div className="cursor-pointer">{t.blog}</div>
+							<div
+								className={`cursor-pointer text-[13px] px-3 h-10 flex items-center ${
+									scrolled ? "hover:bg-gray-800 hover:text-white" : "hover:bg-white hover:text-black"
+								} rounded hover:font-bold duration-150`}
+							>
+								{t.blog}
+							</div>
 						</Link>
 						<Link href="/faqs">
-							<div className="cursor-pointer">{t.faqs}</div>
+							<div
+								className={`cursor-pointer text-[13px] px-3 h-10 flex items-center ${
+									scrolled ? "hover:bg-gray-800 hover:text-white" : "hover:bg-white hover:text-black"
+								} rounded hover:font-bold duration-150`}
+							>
+								{t.faqs}
+							</div>
 						</Link>
 						<Link href="/contact-us">
-							<div className="cursor-pointer">{t.contactUs}</div>
+							<div
+								className={`cursor-pointer text-[13px] px-3 h-10 flex items-center ${
+									scrolled ? "hover:bg-gray-800 hover:text-white" : "hover:bg-white hover:text-black"
+								} rounded hover:font-bold duration-150`}
+							>
+								{t.contactUs}
+							</div>
 						</Link>
 					</div>
 
@@ -174,6 +203,6 @@ export default function Navbar() {
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }

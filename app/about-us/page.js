@@ -52,7 +52,7 @@ export default function Page() {
 
 	return (
 		<div className="relative tracking-wide">
-			<div className="px-6 py-14 space-y-16 bg-white dark:bg-[#010104] text-gray-800 dark:text-gray-100">
+			<div className="px-6 py-14 space-y-16 bg-white dark:bg-[#010104] text-gray-800 dark:text-gray-100 mt-16">
 				<div className="relative">
 					<div
 						className="relative flex justify-center font-bold text-3xl"

@@ -43,8 +43,8 @@ export default function MobileNavMenu() {
 
 	return (
 		<Sheet>
-			<SheetTrigger>
-				<div className="-rotate-90 cursor-pointer">
+			<SheetTrigger asChild>
+				<button className="-rotate-90 cursor-pointer">
 					<svg
 						width="24"
 						height="24"
@@ -55,52 +55,43 @@ export default function MobileNavMenu() {
 						strokeLinecap="round"
 						strokeLinejoin="round"
 					>
-						<line x1="18" y1="20" x2="18" y2="10"></line>
-						<line x1="12" y1="20" x2="12" y2="4"></line>
-						<line x1="6" y1="20" x2="6" y2="14"></line>
+						<line x1="18" y1="20" x2="18" y2="10" />
+						<line x1="12" y1="20" x2="12" y2="4" />
+						<line x1="6" y1="20" x2="6" y2="14" />
 					</svg>
-				</div>
+				</button>
 			</SheetTrigger>
-			<SheetContent>
+
+			<SheetContent position="right" size="content">
 				<DialogTitle></DialogTitle>
 				<div className="relative w-full pt-4 overflow-y-auto pb-16">
 					<div className="relative px-8">
 						<div className="relative flex">
 							<div
 								className="relative h-28 w-28"
-								style={{ background: "url(/assets/logo/logo.png) center / cover" }}
+								style={{ background: "url(/assets/logo/logo.jpg) center / cover" }}
 							></div>
 						</div>
 						<div className="relative pt-4 text-xl font-bold">Abroad Documents Solution</div>
 						<div className="relative text-sm mt-1">Gautam Law Chamber</div>
 					</div>
+
 					<div className="relative mt-5 px-5 space-y-2">
-						<Link href="/">
-							<div className="h-10 text-sm flex items-center hover:font-bold hover:bg-gray-200 px-3">
-								{t.home}
-							</div>
-						</Link>
-						<Link href="/services">
-							<div className="h-10 text-sm flex items-center hover:font-bold hover:bg-gray-200 px-3">
-								{t.services}
-							</div>
-						</Link>
-						<Link href="/blogs">
-							<div className="h-10 text-sm flex items-center hover:font-bold hover:bg-gray-200 px-3">
-								{t.blog}
-							</div>
-						</Link>
-						<Link href="/faqs">
-							<div className="h-10 text-sm flex items-center hover:font-bold hover:bg-gray-200 px-3">
-								{t.faqs}
-							</div>
-						</Link>
-						<Link href="/contact-us">
-							<div className="h-10 text-sm flex items-center hover:font-bold hover:bg-gray-200 px-3">
-								{t.contactUs}
-							</div>
-						</Link>
+						{[
+							{ href: "/", label: t.home },
+							{ href: "/services", label: t.services },
+							{ href: "/blogs", label: t.blog },
+							{ href: "/faqs", label: t.faqs },
+							{ href: "/contact-us", label: t.contactUs },
+						].map((item, i) => (
+							<Link key={i} href={item.href}>
+								<div className="h-10 text-sm flex items-center hover:font-bold hover:bg-gray-200 px-3">
+									{item.label}
+								</div>
+							</Link>
+						))}
 					</div>
+
 					<div className="mt-8 px-8">
 						<div className="text-sm font-bold">{t.contactInfo}</div>
 						<div className="mt-4 text-sm space-y-2">
@@ -115,7 +106,7 @@ export default function MobileNavMenu() {
 									strokeLinecap="round"
 									strokeLinejoin="round"
 								>
-									<path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+									<path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
 								</svg>
 								<a href={`tel:${t.phoneNumber}`} className="hover:underline text-blue-600">
 									{t.phoneNumber}
@@ -132,8 +123,8 @@ export default function MobileNavMenu() {
 									strokeLinecap="round"
 									strokeLinejoin="round"
 								>
-									<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-									<polyline points="22,6 12,13 2,6"></polyline>
+									<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+									<polyline points="22,6 12,13 2,6" />
 								</svg>
 								<a href={`mailto:${t.email}`} className="hover:underline text-blue-600">
 									{t.email}

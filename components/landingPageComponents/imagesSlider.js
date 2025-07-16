@@ -36,8 +36,8 @@ export default function ImagesSlider() {
 			{/* One Column */}
 			<div className="relative w-48 h-full flex items-center">
 				<div className="relative h-full w-full my-auto overflow-hidden">
-					<div className="absolute top-0 z-10 h-40 w-full bg-gradient-to-b from-white to-transparent"></div>
-					<div className="absolute bottom-0 z-10 h-40 w-full bg-gradient-to-t from-white to-transparent"></div>
+					<div className="absolute top-0 z-10 h-40 w-full bg-gradient-to-b from-[#100f3a] to-transparent"></div>
+					<div className="absolute bottom-0 z-10 h-40 w-full bg-gradient-to-t from-[#100f3a] to-transparent"></div>
 					<div className="absolute w-full animate-slide-up-first space-y-4">
 						{duplicatedImages1.map((img, index) => (
 							<div
@@ -53,8 +53,8 @@ export default function ImagesSlider() {
 			{/* Second Column (staggered scroll) */}
 			<div className="relative w-48 h-full flex items-center">
 				<div className="relative h-[90%] w-full overflow-hidden">
-					<div className="absolute top-0 z-10 h-40 w-full bg-gradient-to-b from-white to-transparent"></div>
-					<div className="absolute bottom-0 z-10 h-40 w-full bg-gradient-to-t from-white to-transparent"></div>
+					<div className="absolute top-0 z-10 h-40 w-full bg-gradient-to-b from-[#100f3a] to-transparent"></div>
+					<div className="absolute bottom-0 z-10 h-40 w-full bg-gradient-to-t from-[#100f3a] to-transparent"></div>
 					<div className="absolute w-full animate-slide-up-second space-y-4">
 						{duplicatedImages2.map((img, index) => (
 							<div

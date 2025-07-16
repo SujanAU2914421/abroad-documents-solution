@@ -25,7 +25,7 @@ export default function SocialLinks() {
 				href="https://wa.me/9779826923934"
 				target="_blank"
 				rel="noopener noreferrer"
-				className="fixed z-50 bg-white rounded-full text-gray-700 shadow-xl border bottom-8 left-8 flex items-center justify-center h-10 px-4 gap-2 hover:bg-green-100 transition"
+				className="fixed z-50 bg-white rounded-full text-gray-700 shadow-xl border bottom-8 left-8 flex items-center justify-center h-12 px-5 gap-2 hover:bg-green-100 transition"
 				aria-label={t.chatOnWhatsApp}
 			>
 				{/* WhatsApp Icon */}
@@ -41,7 +41,7 @@ export default function SocialLinks() {
 			</a>
 
 			{/* Social Icons Bar Right Side */}
-			<div className="fixed top-0 right-4 h-screen flex items-center z-40">
+			<div className="fixed right-4 h-auto top-1/2 flex items-center z-40">
 				<div className="bg-white border shadow-xl rounded-full grid grid-cols-1 overflow-hidden">
 					{/* WhatsApp */}
 					<a
@@ -62,9 +62,14 @@ export default function SocialLinks() {
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label="Instagram"
-						className="h-16 w-16 flex items-center justify-center hover:bg-gray-100 duration-200"
+						className="h-16 w-16 p-4 flex items-center justify-center hover:bg-gray-100 duration-200"
 					>
-						<Instagram size={30} />
+						<div
+							className="relative h-full w-full"
+							style={{
+								background: `url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png) center / cover`,
+							}}
+						></div>
 					</a>
 
 					{/* Viber */}
@@ -73,20 +78,28 @@ export default function SocialLinks() {
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label="Viber"
-						className="h-16 w-16 flex items-center justify-center hover:bg-gray-100 duration-200"
+						className="h-16 w-16 p-4 flex items-center justify-center hover:bg-gray-100 duration-200"
 					>
-						<svg width="30" height="30" viewBox="0 0 495 495" fill="#933EC5">
-							<path d="M185.428,309.197c36.332,36.332,80.711,64.548,132.199,85.521c35.751,14.563,65.944-0.643,78.29-37.357c2.216-6.591,2.37-13.043-0.014-19.522c-5.76-15.657-60.331-55.305-76.661-56.194c-12.523-0.681-19.306,7.829-25.037,16.275c-10.838,15.953-24.576,16.042-39.899,9.224c-15.419-6.862-28.91-15.662-40.037-26.79c-11.127-11.127-19.928-24.618-26.79-40.037c-6.818-15.323-6.729-29.061,9.225-39.898c8.446-5.731,16.955-12.514,16.274-25.037c-0.889-16.329-40.537-70.901-56.194-76.66c-6.479-2.384-12.931-2.229-19.522-0.014c-36.714,12.346-51.92,42.54-37.357,78.29C120.88,228.486,149.096,272.865,185.428,309.197z" />
-						</svg>
+						<div
+							className="relative h-full w-full"
+							style={{
+								background: `url(https://images.seeklogo.com/logo-png/30/1/viber-logo-png_seeklogo-309904.png) center / cover`,
+							}}
+						></div>
 					</a>
 
 					{/* Phone Call */}
 					<a
 						href="tel:+9779812818289"
 						aria-label="Call Phone"
-						className="h-16 w-16 flex items-center justify-center hover:bg-gray-100 duration-200"
+						className="h-16 w-16 p-4 flex items-center justify-center hover:bg-gray-100 duration-200"
 					>
-						<PhoneCall size={30} />
+						<div
+							className="relative h-full w-full"
+							style={{
+								background: `url(https://img.icons8.com/color/512/apple-phone.png) center / cover`,
+							}}
+						></div>
 					</a>
 				</div>
 			</div>

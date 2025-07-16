@@ -14,7 +14,7 @@ import React from "react";
 export default function MainPage() {
 	return (
 		<div className="h-auto pb-32" id="animate">
-			<div className="relative">
+			<div className="relative bg-[#100f3a] text-white min-h-screen">
 				<FirstSection />
 			</div>
 

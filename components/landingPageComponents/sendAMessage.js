@@ -175,20 +175,15 @@ export default function SendAMessage() {
 
 					{/* Status messages */}
 					<div aria-live="polite" className="mt-4 min-h-[1.5em]">
-						{status === "success" && (
-							<p className="text-green-600 font-semibold">{translation.successMessage}</p>
-						)}
-						{status === "error" && (
-							<p className="text-red-600 font-semibold">{translation.errorMessage + errorMsg}</p>
-						)}
+						{status === "success" && <p className="text-green-600 font-semibold">{translation.successMessage}</p>}
+						{status === "error" && <p className="text-red-600 font-semibold">{translation.errorMessage + errorMsg}</p>}
 					</div>
 				</form>
 
 				{/* Map Section */}
 				<div className="relative h-auto w-full md:w-1/2">
 					<iframe
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14263.374199649728!2d87.98208000000001!3d26.653491199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e5bb9cd81165c5%3A0x8b1400aa4620516!2sJhapa%20Natak%20Ghar!5e0!3m2!1sen!2snp!4v1750298013882!5m2!1sen!2snp"
-						title="Google Map showing location of Abroad Documents Solution Nepal"
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.5342602932333!2d85.32640917546713!3d27.700786176186334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198f0c24bc15%3A0x8a59e5681a507bca!2sGautam%20Law%20Chamber!5e0!3m2!1sen!2snp!4v1752647363901!5m2!1sen!2snp"
 						className="h-[500px] w-full border rounded"
 						loading="lazy"
 						referrerPolicy="no-referrer-when-downgrade"

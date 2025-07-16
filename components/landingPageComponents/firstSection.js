@@ -5,7 +5,7 @@ import ImagesSlider from "./imagesSlider";
 const content = {
 	en: {
 		tagline: "Trusted Notary Services – Fast, Secure, and Always By Your Side.",
-		heading: "Certified Notary, Certification, and Translation Services in Nepal",
+		heading: "Authorized Notary, Translation & Certification Services In Nepal Online",
 		description: "Certified professionals delivering seamless notarization—anytime, anywhere.",
 		buttonText: "Checkout our services",
 		buttonLink: "/services",
@@ -56,13 +56,13 @@ export default function FirstSection() {
 	return (
 		<section
 			aria-labelledby="homepage-hero-title"
-			className="relative h-auto xl:px-32 lg:px-32 md:px-16 sm:px-8 px-4 flex items-center gap-8 xl:*:w-1/2 lg:*:w-1/2 xl:flex-nowrap lg:flex-nowrap flex-wrap-reverse *:w-full"
+			className="relative min-h-screen xl:px-32 lg:px-32 md:px-16 sm:px-8 px-4 flex items-center gap-8 xl:*:w-1/2 lg:*:w-1/2 xl:flex-nowrap lg:flex-nowrap flex-wrap-reverse *:w-full"
 		>
 			<article className="relative flex items-center">
 				<div className="relative">
 					<div className="relative flex">
 						<p
-							className="relative text-sm bg-purple-200 p-1 transition-all duration-500 ease-out"
+							className="relative text-sm bg-purple-100 text-gray-800 p-1 transition-all duration-500 ease-out"
 							style={{ transform: "translateX(30px)", opacity: 0 }}
 							ref={setRef}
 						>
@@ -93,7 +93,7 @@ export default function FirstSection() {
 					>
 						<Link
 							href={t.buttonLink}
-							className="relative text-sm text-white bg-purple-600 font-bold rounded-md shadow-xl shadow-gray-200 cursor-pointer flex items-center justify-center px-8 h-10 gap-2"
+							className="relative text-sm text-white bg-purple-600 font-bold rounded-md shadow-xl cursor-pointer flex items-center justify-center px-8 h-10 gap-2"
 							aria-label={t.buttonText}
 						>
 							{t.buttonText}

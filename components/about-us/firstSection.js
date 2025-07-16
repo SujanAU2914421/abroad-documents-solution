@@ -48,11 +48,7 @@ export default function FirstSection({ setFirstSectionRef }) {
 				>
 					{t.description}
 				</div>
-				<div
-					className="flex mt-8"
-					style={{ opacity: 0, transform: "translateX(10px)" }}
-					ref={setFirstSectionRef}
-				>
+				<div className="flex mt-8" style={{ opacity: 0, transform: "translateX(10px)" }} ref={setFirstSectionRef}>
 					<HeroButton>{t.buttonText}</HeroButton>
 				</div>
 				<div
@@ -68,8 +64,6 @@ export default function FirstSection({ setFirstSectionRef }) {
 				style={{ opacity: 0, transform: "scale(0.9)" }}
 				ref={setFirstSectionRef}
 			></div>
-
-			
 		</div>
 	);
 }

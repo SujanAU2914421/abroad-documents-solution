@@ -28,7 +28,7 @@ export default function Page() {
 
 	return (
 		<div>
-			<div className="relative py-16">
+			<div className="relative py-16 mt-16">
 				<div className="relative flex justify-center font-bold text-3xl">{t.title}</div>
 				<div className="relative text-sm flex justify-center">
 					<div className="flex items-center gap-2 mt-2 text-gray-700">
